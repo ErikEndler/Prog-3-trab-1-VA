@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,25 +64,26 @@ public class ModelVendas {
 	public void setProduto(String produto) {
 		this.produto = produto;
 	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
-	}
-	//lista para implementação de DAO generico
+	
+	//lista nomes das variaveis
 	public List<String> getCamposnome(){
 		ArrayList<String> listNomes = new ArrayList<>();
 		listNomes.add("id");
 		listNomes.add("data");
 		listNomes.add("cliente");
-		listNomes.add("tipo_pagamento");
+		listNomes.add("tipo pagamento");
 		listNomes.add("vendedor");
 		listNomes.add("produto");
 		listNomes.add("valor");
 		listNomes.add("quantidade");
 		listNomes.add("observacao");		
 		return listNomes;		
+	}
+	public Date getData() {
+		return data;
+	}
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 

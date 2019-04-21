@@ -7,7 +7,7 @@ import model.ModelVendas;
 public class DaoVendas extends Conexao {
 	
 	//metodo salvar venda
-	public int salvarCategoriaDAO(ModelVendas pModelVenda) {
+	public int salvarVendasDAO(ModelVendas pModelVenda) {
 		try {
 			this.conectar();
 			return this.insertSQL("INSERT INTO tb_vendas(" 
@@ -61,7 +61,7 @@ public class DaoVendas extends Conexao {
 					+ "valor = '" + pModelVenda.getValor()+ "',"
 					+ "quantidade = '" + pModelVenda.getQuantidade()+ "',"
 					+ "observacao = '" + pModelVenda.getObservacao()+ "' " 
-					+ "WHERE categoria_id = '" + pModelVenda.getId() + "'");
+					+ "WHERE id = '" + pModelVenda.getId() + "'");
 
 		} catch (Exception e) {
 			e.printStackTrace();
