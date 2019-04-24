@@ -89,7 +89,7 @@ public class DaoVendas extends Conexao {
 			
 			while(this.getResultSet().next()) {
 				modelVendas.setId(this.getResultSet().getInt(1));
-				modelVendas.setData(this.getResultSet().getDate(2));
+				modelVendas.setData(this.getResultSet().getString(2));
 				modelVendas.setCliente(this.getResultSet().getString(3));
 				modelVendas.setTipo_pagamento(this.getResultSet().getInt(4));
 				modelVendas.setVendedor(this.getResultSet().getString(5));
@@ -125,7 +125,7 @@ public class DaoVendas extends Conexao {
 			while(this.getResultSet().next()) {
 				modelVendas = new ModelVendas();
 				modelVendas.setId(this.getResultSet().getInt(1));
-				modelVendas.setData(this.getResultSet().getDate(2));
+				modelVendas.setData(this.getResultSet().getString(2));
 				modelVendas.setCliente(this.getResultSet().getString(3));
 				modelVendas.setTipo_pagamento(this.getResultSet().getInt(4));
 				modelVendas.setVendedor(this.getResultSet().getString(5));

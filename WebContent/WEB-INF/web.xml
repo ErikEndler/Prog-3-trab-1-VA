@@ -15,8 +15,35 @@
     <servlet-name>ServletVenda</servlet-name>
     <servlet-class>ServletVenda</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>ServletCadastro</display-name>
+    <servlet-name>ServletCadastro</servlet-name>
+    <servlet-class>ServletCadastro</servlet-class>
+  </servlet><servlet>
+    <description></description>
+    <display-name>ServletLogin</display-name>
+    <servlet-name>ServletLogin</servlet-name>
+    <servlet-class>ServletLogin</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>ServletInserirTipo</display-name>
+    <servlet-name>ServletInserirTipo</servlet-name>
+    <servlet-class>ServletInserirTipo</servlet-class>
+  </servlet>
+  
+  
   <servlet-mapping>
     <servlet-name>ServletVenda</servlet-name>
     <url-pattern>/venda</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletCadastro</servlet-name>
+    <url-pattern>/registrarvenda</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletLogin</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
 </web-app>

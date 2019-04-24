@@ -1,8 +1,6 @@
 package model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ModelVendas {
@@ -14,7 +12,7 @@ public class ModelVendas {
 	private double valor;
 	private int quantidade;
 	private String observacao;
-	private Date data;
+	private String data;
 	
 	public int getId() {
 		return id;
@@ -79,10 +77,10 @@ public class ModelVendas {
 		listNomes.add("observacao");		
 		return listNomes;		
 	}
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 

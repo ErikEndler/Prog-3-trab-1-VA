@@ -1,13 +1,13 @@
 /* sql para criação do banco */
 
 create table tb_vendas(
-	id integer not null,
+	id serial not null,
 	data date,
 	cliente varchar(40) not null,
 	tipo_pagamento integer not null,
 	vendedor varchar(35) not null,
 	produto varchar(35) not null,
-	valor double not null,
+	valor double precision not null,
 	quantidade integer not null,
 	observacao varchar(50),
 	primary key(id),
@@ -15,9 +15,9 @@ create table tb_vendas(
 )
 
 create table tb_tipo_pagamento(
-	id integer not null,
+	id serial not null,
 	nome varchar not null,
-	primay key (id)
+	primary key (id)
 );
 
 create table tb_vendedor(
@@ -25,3 +25,9 @@ create table tb_vendedor(
 	nome varchar(35) not null,
 	primary key(id)
 );
+
+creat table login(
+	nome varchar(10) not null,
+	senha varchar(6),
+	primary key(nome)
+	);

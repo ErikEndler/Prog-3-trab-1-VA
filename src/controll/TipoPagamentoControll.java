@@ -1,28 +1,26 @@
 package controll;
 
-import java.util.ArrayList;
-
 import model.ModelTipoPagamento;
 import persistence.DaoTipoPagamento;
 
 public class TipoPagamentoControll {
 	
-	private DaoTipoPagamento daoTypePayment = new DaoTipoPagamento();
+	private DaoTipoPagamento daoTipoPagamento = new DaoTipoPagamento();
 	
 	public int salvarTipoPagamentoControle(ModelTipoPagamento pModeltipoPagamento) {
-		return this.daoTypePayment.salvarTipoPagamentoDAO(pModeltipoPagamento);
+		return this.daoTipoPagamento.salvarTipoPagamentoDAO(pModeltipoPagamento);
 	}
 	public boolean excluirTipoPagamentoControle(int pCodigo) {
-		return this.daoTypePayment.excluirTipoPagamentoDAO(pCodigo);
+		return this.daoTipoPagamento.excluirTipoPagamentoDAO(pCodigo);
 	}
 	public boolean alterarTipoPagamentoControle(ModelTipoPagamento pModeloTipoPagamento) {
-		return this.daoTypePayment.alterarTipoPagamentoDAO(pModeloTipoPagamento);
+		return this.daoTipoPagamento.alterarTipoPagamentoDAO(pModeloTipoPagamento);
 	}
 	public ModelTipoPagamento retornarTipoPagamentoControle(int pCodigo) {
-		return this.daoTypePayment.retornaTipoPagamentoDAO(pCodigo);
+		return this.daoTipoPagamento.retornaTipoPagamentoDAO(pCodigo);
 	}
 	public ModelTipoPagamento retornarTipoPagamentoNomeControle(String pNome) {
-		return this.daoTypePayment.retornaTipoPagamentoNomeDAO(pNome);
+		return this.daoTipoPagamento.retornaTipoPagamentoNomeDAO(pNome);
 	}
 	/*
 	 * public ArrayList<ModelTypePayment> retornaListaCategoriaControle(){ return

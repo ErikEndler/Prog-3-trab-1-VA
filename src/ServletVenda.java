@@ -6,11 +6,7 @@ import model.ModelTipoPagamento;
 import model.ModelVendas;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -42,11 +38,15 @@ public class ServletVenda extends HttpServlet {
 				else {
 					out.println(paramValue + "<br>");
 					for(int i=0;i<listaNomes.size();i++) { 
-						if(paramName==listaNomes.get(i)) {
+						System.out.println("for iniciado");
+						System.out.println(paramName);
+						System.out.println(listaNomes.get(i));
+						if(paramName.equals(listaNomes.get(i))) {
+							System.out.println("entrou no if");
 							inserir(paramName, paramValue);
 						}
 						String x = listaNomes.get(i);
-						System.out.println(x);
+						//System.out.println(x);
 						}
 					}	
 			} else {
@@ -68,24 +68,32 @@ public class ServletVenda extends HttpServlet {
 		switch(x) {
 		case "id":
 			modelVendas.setId(Integer.parseInt(valor));
+			System.out.println("salvo id");
+			
 			break;
 		case "data":
-			DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-			//LocalDate data = LocalDate.parse("23/11/2015", formato);
-			Date dataFormatada = (Date) formato.parse(valor);
-			modelVendas.setData(dataFormatada);
+			modelVendas.setData(valor);
+			/*
+			 * DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			 * //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); Date data;
+			 * data = (Date) formato.parse(valor); modelVendas.setData(data);
+			 */
 			//Se quiser pegar a data apenas, use java.time.LocalDate.now();
 			//Se quiser data e hora, use java.time.Instant.now();
+			//System.out.println("salvo data");
 			break;
 		case "client":
 			modelVendas.setCliente(valor);
+			System.out.println("salvo cliente");
 			break;
 		case "tipo pagamento":
+			System.out.println("imprimir : "+valor);
 			ModelTipoPagamento tipo = new ModelTipoPagamento();
 			//busca banco tipo pagamento equivalente ao nome do selecionado
 			tipo=tipoControll.retornarTipoPagamentoNomeControle(valor);
 			//seta id od yipo selecionado no modelo vendas
 			modelVendas.setTipo_pagamento(tipo.getId());
+			System.out.println("salvo tipo pagamento");
 			break;
 		case "vendedor":
 			modelVendas.setVendedor(valor);
@@ -94,6 +102,7 @@ public class ServletVenda extends HttpServlet {
 			modelVendas.setProduto(valor);
 			break;
 		case "valor":
+			valor = valor.replace(",", ".");
 			modelVendas.setValor(Double.parseDouble(valor));
 			break;
 		case "quantidade":

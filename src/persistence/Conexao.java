@@ -15,9 +15,9 @@ public class Conexao {
 	private Statement statement;
 	private ResultSet resultSet;
 
-	private String servidor = "localhost:5452";
+	private String servidor = "localhost:5432";
 	private String nomeDoBanco = "trab_1_prog3";
-	private String usuario = "root";
+	private String usuario = "postgres";
 	private String senha = "";
 
 	public Conexao() {}
@@ -99,14 +99,15 @@ public class Conexao {
 
 			// Definido o Statement, executamos a query no banco de dados
 			this.getStatement().executeUpdate(pSQL);
-
-			// consulta o ultimo id inserido
-			this.setResultSet(this.getStatement().executeQuery("SELECT last_insert_id();"));
-
-			// recupera o ultimo id inserido
-			while (this.resultSet.next()) {
-				status = this.resultSet.getInt(1);
-			}
+			/*
+			 * // consulta o ultimo id inserido
+			 * this.setResultSet(this.getStatement().executeQuery("SELECT last_insert_id();"
+			 * ));
+			 * 
+			 * // recupera o ultimo id inserido while (this.resultSet.next()) { status =
+			 * this.resultSet.getInt(1); }
+			 */
+			status=1;
 
 			// retorna o ultimo id inserido
 			return status;

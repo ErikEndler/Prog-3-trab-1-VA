@@ -1,7 +1,6 @@
 package persistence;
 
 import model.ModelTipoPagamento;
-import model.ModelVendas;
 
 public class DaoTipoPagamento extends Conexao {
 	
@@ -70,17 +69,17 @@ public class DaoTipoPagamento extends Conexao {
 		}
 		/* Retorna um tipo pagamento em especifico atraves do nome */
 		public ModelTipoPagamento retornaTipoPagamentoNomeDAO(String pNome) {
-			ModelTipoPagamento modelVendas = new ModelTipoPagamento();
+			ModelTipoPagamento modelTipoPagamento = new ModelTipoPagamento();
 			try {
 				this.conectar();
 				this.executarSQL("SELECT "
 						+ "id,"
-						+ "nome"
-						+ " FROM tb_tipo_pagamento WHERE nome = '"+pNome+"';");
+						+ "nome "
+						+ " FROM tb_tipo_pagamento WHERE nome = '"+pNome+"' ;");
 				
 				while(this.getResultSet().next()) {
-					modelVendas.setId(this.getResultSet().getInt(1));
-					modelVendas.setNome(this.getResultSet().getString(2));
+					modelTipoPagamento.setId(this.getResultSet().getInt(1));
+					modelTipoPagamento.setNome(this.getResultSet().getString(2));
 
 				}
 			} catch (Exception e) {
@@ -88,7 +87,7 @@ public class DaoTipoPagamento extends Conexao {
 			}finally {
 				this.fecharConexao();
 			}
-			return modelVendas;
+			return modelTipoPagamento;
 		}
 
 }
