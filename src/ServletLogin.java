@@ -20,8 +20,6 @@ public class ServletLogin extends HttpServlet {
 			throws ServletException, IOException {
 		LoginControll loginControll = new LoginControll();
 		ModelLogin modelLogin = new ModelLogin();
-		String resultLogin;
-		
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 
@@ -33,21 +31,19 @@ public class ServletLogin extends HttpServlet {
 		if (modelLogin.getLogin().equals(login) && modelLogin.getSenha().equals(senha)) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("LoggedIn", new String("true"));
-			response.sendRedirect("clienteSearch");
-			resultLogin = "Login realizado com sucesso";
+			response.sendRedirect("Home.html");
 			
 		} else {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loggedIn", new String("false"));
 			sendLoginForm(response, true);
-			resultLogin = "Senha ou Login incorreto";
 		}
 
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// sendLoginForm(response, false);
+		 sendLoginForm(response, false);
 	}
 	
 	private void sendLoginForm(HttpServletResponse response, boolean withErrorMessage)
