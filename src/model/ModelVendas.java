@@ -7,7 +7,7 @@ public class ModelVendas {
 	private int id;
 	private String cliente;
 	private int tipo_pagamento;
-	private String Vendedor;
+	private int Vendedor;
 	private String produto;
 	private double valor;
 	private int quantidade;
@@ -32,10 +32,10 @@ public class ModelVendas {
 	public void setTipo_pagamento(int tipo_pagamento) {
 		this.tipo_pagamento = tipo_pagamento;
 	}
-	public String getVendedor() {
+	public int getVendedor() {
 		return Vendedor;
 	}
-	public void setVendedor(String vendedor) {
+	public void setVendedor(int vendedor) {
 		Vendedor = vendedor;
 	}
 	public double getValor() {

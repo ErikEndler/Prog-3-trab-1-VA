@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+<title>Vendas</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">Vendas</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+			aria-expanded="false" aria-label="Alterna navegação">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					href="Home.html">Home </a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="Vendas.html">Vendas </a></li>	
+				<li class="nav-item active"><a class="nav-link" href="">Cadastro Vendas<span
+						class="sr-only">(Página atual)</span></a></li>
+				
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container">
+	<h1>Registro de Venda</h1>
+	
+	<form id="1" METHOD=POST>
+		<div class="variavel" style="margin-left: 10px">
+			<div class="form-row" >
+				<div class="form-group col-md-3">
+					<label for="data">Data</label> <input type="date"
+						class="form-control" name="data" value="" id="data" placeholder="Email">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="cliente">Cliente</label> <input type="text"
+						class="form-control" name="cliente" value="" id="cliente" placeholder="Cliente">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="produto">Produto</label> <input type="text"
+						class="form-control" id="produto" name="produto" value="" placeholder="Produto">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="vendedor">Vendedor</label> <select
+						id="vendedor" name="vendedor" value="" class="form-control">
+						<option>@@</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-2">
+					<label for="valor">Valor</label> <input type="text"
+						class="form-control" name="valor" value="" id="valor" placeholder="$ 00,00">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="quantidade">Quantidade</label> <input
+						type="number" class="form-control" name="quantidade" value="" id="quantidade"
+						placeholder="Quantidade">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="tipopagamento">Forma Pagamento</label> <select
+						id="tipopagamento" name="tipopagamento" value=""  class="form-control">
+						<option>##</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-8">
+					<label for="observacao">Observação</label>
+					<textarea class="form-control" name="observacao"  id="observacao" rows="3"></textarea>
+				</div>
+			</div>
+			<button class="btn btn-primary" type="submit">Salvar</button>
+			<button type="reset" class="btn btn-warning">Limpar</button>
+		</div>
+	</form>
+	</div>
+</body>
+</html>

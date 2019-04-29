@@ -9,41 +9,89 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
   <servlet>
-    <description></description>
-    <display-name>ServletVenda</display-name>
-    <servlet-name>ServletVenda</servlet-name>
-    <servlet-class>ServletVenda</servlet-class>
-  </servlet>
-  <servlet>
-    <description></description>
-    <display-name>ServletCadastro</display-name>
-    <servlet-name>ServletCadastro</servlet-name>
-    <servlet-class>ServletCadastro</servlet-class>
-  </servlet><servlet>
     <description></description>
     <display-name>ServletLogin</display-name>
     <servlet-name>ServletLogin</servlet-name>
     <servlet-class>ServletLogin</servlet-class>
   </servlet>
-  <servlet>
-    <description></description>
-    <display-name>ServletInserirTipo</display-name>
-    <servlet-name>ServletInserirTipo</servlet-name>
-    <servlet-class>ServletInserirTipo</servlet-class>
-  </servlet>
-  
-  
-  <servlet-mapping>
-    <servlet-name>ServletVenda</servlet-name>
-    <url-pattern>/venda</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ServletCadastro</servlet-name>
-    <url-pattern>/registrarvenda</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ServletLogin</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>ServletVendasUpdate</display-name>
+    <servlet-name>ServletVendasUpdate</servlet-name>
+    <servlet-class>ServletVendasUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletVendasUpdate</servlet-name>
+    <url-pattern>/updateVenda</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ServletVendasCadastro</display-name>
+    <servlet-name>ServletVendasCadastro</servlet-name>
+    <servlet-class>ServletVendasCadastro</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletVendasCadastro</servlet-name>
+    <url-pattern>/insertVenda</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ServletVendasListar</display-name>
+    <servlet-name>ServletVendasListar</servlet-name>
+    <servlet-class>ServletVendasListar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletVendasListar</servlet-name>
+    <url-pattern>/vendas</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ServletTipoUpdate</display-name>
+    <servlet-name>ServletTipoUpdate</servlet-name>
+    <servlet-class>ServletTipoUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletTipoUpdate</servlet-name>
+    <url-pattern>/updateTipo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ServletTipoListar</display-name>
+    <servlet-name>ServletTipoListar</servlet-name>
+    <servlet-class>ServletTipoListar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletTipoListar</servlet-name>
+    <url-pattern>/tipospagamento</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ServletTipoInsert</display-name>
+    <servlet-name>ServletTipoInsert</servlet-name>
+    <servlet-class>ServletTipoInsert</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletTipoInsert</servlet-name>
+    <url-pattern>/insertTipo</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
 </web-app>

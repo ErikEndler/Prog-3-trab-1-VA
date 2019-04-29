@@ -2,15 +2,57 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
 <title>Formulario Tipo de Pagamento</title>
 </head>
 <body>
-	<h1>Formulario Tipo de Pagamento</h1>
-	<form>
-	Nome<input type="text" name="nome">
-	<br><br>
-	<input type="submit" name="submit" value="Cadastrar Tipo Pagamento">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" >Tipos Pagamento</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+			aria-expanded="false" aria-label="Alterna navegação">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class=" collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					href="Home.html">Home </a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="tipospagamento">Tipos Pagamento </a></li>
+				<li class="nav-item active"><a class="nav-link" href="FormularioTipo.html">Cadastrar</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	
+	<div class="container">
+	<h3>Cadastro tipo pagamento</h3>
+	
+	<form id="1" method="post">
+		<div class="variavel" style="margin-left: 10px">
+			<div class="form-row" >
+				<div class="form-group col-md-3">
+					<label for="id">ID</label> <input type="Text"
+						 readonly class="form-control-plaintext" name="id" value="" id="id" placeholder="Id">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="nome">Nome</label> <input type="text"
+						class="form-control" name="nome" value="" id="nome" placeholder="Nome">
+				</div>
+			</div>
+		<button class="btn btn-primary" type="submit">Salvar</button>
+		<button type="reset" class="btn btn-warning">Limpar</button>
+		</div>
 	</form>
+	</div>
 
 </body>
 </html>

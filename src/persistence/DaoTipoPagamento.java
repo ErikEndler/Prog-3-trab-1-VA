@@ -1,6 +1,9 @@
 package persistence;
 
+import java.util.ArrayList;
+
 import model.ModelTipoPagamento;
+import model.ModelVendas;
 
 public class DaoTipoPagamento extends Conexao {
 	
@@ -31,7 +34,7 @@ public class DaoTipoPagamento extends Conexao {
 				this.fecharConexao();
 			}
 		}
-		//metodo para alterar venda
+		//metodo para alterar Tip ode venda
 		public boolean alterarTipoPagamentoDAO(ModelTipoPagamento pModelTipoPagamento) {
 			try {
 				this.conectar();
@@ -88,6 +91,30 @@ public class DaoTipoPagamento extends Conexao {
 				this.fecharConexao();
 			}
 			return modelTipoPagamento;
+		}
+		
+		/* Retorna a lista de tipos de vendas */
+		public ArrayList<ModelTipoPagamento> retornarListaTiposDAO(){
+			ArrayList<ModelTipoPagamento> listaTipos = new ArrayList<>();
+			ModelTipoPagamento modelTipo = new ModelTipoPagamento();
+			try {
+				this.conectar();
+				this.executarSQL("SELECT "
+						+ "id,"
+						+ "nome "
+						+ "FROM tb_tipo_pagamento;");
+				while(this.getResultSet().next()) {
+					modelTipo = new ModelTipoPagamento();
+					modelTipo.setId(this.getResultSet().getInt(1));
+					modelTipo.setNome(this.getResultSet().getString(2));					
+					listaTipos.add(modelTipo);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				this.fecharConexao();
+			}
+			return listaTipos;	
 		}
 
 }

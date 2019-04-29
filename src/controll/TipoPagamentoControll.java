@@ -1,5 +1,7 @@
 package controll;
 
+import java.util.ArrayList;
+
 import model.ModelTipoPagamento;
 import persistence.DaoTipoPagamento;
 
@@ -21,6 +23,9 @@ public class TipoPagamentoControll {
 	}
 	public ModelTipoPagamento retornarTipoPagamentoNomeControle(String pNome) {
 		return this.daoTipoPagamento.retornaTipoPagamentoNomeDAO(pNome);
+	}
+	public ArrayList<ModelTipoPagamento> retornaListaTiposControle() {
+		return this.daoTipoPagamento.retornarListaTiposDAO();
 	}
 	/*
 	 * public ArrayList<ModelTypePayment> retornaListaCategoriaControle(){ return

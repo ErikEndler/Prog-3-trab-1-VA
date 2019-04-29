@@ -92,7 +92,7 @@ public class DaoVendas extends Conexao {
 				modelVendas.setData(this.getResultSet().getString(2));
 				modelVendas.setCliente(this.getResultSet().getString(3));
 				modelVendas.setTipo_pagamento(this.getResultSet().getInt(4));
-				modelVendas.setVendedor(this.getResultSet().getString(5));
+				modelVendas.setVendedor(this.getResultSet().getInt(5));
 				modelVendas.setProduto(this.getResultSet().getString(6));
 				modelVendas.setValor(this.getResultSet().getDouble(7));
 				modelVendas.setQuantidade(this.getResultSet().getInt(8));
@@ -112,7 +112,7 @@ public class DaoVendas extends Conexao {
 		try {
 			this.conectar();
 			this.executarSQL("SELECT "
-					+ "id,"
+					+ " id,"
 					+ "data,"
 					+ "cliente,"
 					+ "tipo_pagamento,"
@@ -120,7 +120,7 @@ public class DaoVendas extends Conexao {
 					+ "produto,"
 					+ "valor,"
 					+ "quantidade,"
-					+ "observacao"
+					+ "observacao "
 					+ "FROM tb_vendas;");
 			while(this.getResultSet().next()) {
 				modelVendas = new ModelVendas();
@@ -128,7 +128,7 @@ public class DaoVendas extends Conexao {
 				modelVendas.setData(this.getResultSet().getString(2));
 				modelVendas.setCliente(this.getResultSet().getString(3));
 				modelVendas.setTipo_pagamento(this.getResultSet().getInt(4));
-				modelVendas.setVendedor(this.getResultSet().getString(5));
+				modelVendas.setVendedor(this.getResultSet().getInt(5));
 				modelVendas.setProduto(this.getResultSet().getString(6));
 				modelVendas.setValor(this.getResultSet().getDouble(7));
 				modelVendas.setQuantidade(this.getResultSet().getInt(8));
