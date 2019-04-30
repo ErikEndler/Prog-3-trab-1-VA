@@ -23,7 +23,9 @@ public class ServletTipoListar extends HttpServlet {
 		else {
 			String loggedIn = (String) session.getAttribute("LoggedIn");
 
-			if (!loggedIn.equals("true"))
+			if (loggedIn == null) {
+				response.sendRedirect(loginUrl);
+			} else if (!loggedIn.equals("true"))
 				response.sendRedirect(loginUrl);
 		}
 		listar(response);

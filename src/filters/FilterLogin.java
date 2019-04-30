@@ -24,7 +24,7 @@ public class FilterLogin implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		String login = (String) ((HttpServletRequest)request).getSession().getAttribute("loggedIn");
+		String login = (String) ((HttpServletRequest)request).getSession().getAttribute("LoggedIn");
 		if(login != null && Boolean.parseBoolean(login)) {
 			System.out.println("logado");
 			chain.doFilter(request, response);

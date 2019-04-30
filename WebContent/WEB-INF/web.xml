@@ -113,12 +113,15 @@
   </filter>
   <filter-mapping>
     <filter-name>FilterLogin</filter-name>
-    <servlet-name>/*</servlet-name>
-    <url-pattern>/filterLogin</url-pattern>
+    <servlet-name>ServletHome</servlet-name>
+    <servlet-name>ServletTipoInsert</servlet-name>
+    <servlet-name>ServleTipoListar</servlet-name>
+    <servlet-name>ServletTipoUpdate</servlet-name>
+    <servlet-name>ServletVendasCadastro</servlet-name>
+    <servlet-name>ServletVendasCadastro2</servlet-name>
+    <servlet-name>ServletVendasListar</servlet-name>
+    <servlet-name>ServletVendasUpdate</servlet-name>
+    <url-pattern>/home</url-pattern>
   </filter-mapping>
-  
-  
-  
-  
-  
+    
 </web-app>

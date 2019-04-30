@@ -124,19 +124,19 @@ public class ServletVendasUpdate extends HttpServlet {
 		return nova;		
 	}
 	private String inserirCliente(String string, ModelVendas pVenda) {
-		String nova = string.replace("name=\"cliente\" value=\"\"", "name=\"data\" value=\""+pVenda.getCliente()+"\"");
+		String nova = string.replace("name=\"cliente\" value=\"\"", "name=\"cliente\" value=\""+pVenda.getCliente()+"\"");
 		return nova;
 	}
 	private String inserirProduto(String string, ModelVendas pVenda) {
-		String nova = string.replace("name=\"produto\" value=\"\"", "name=\"data\" value=\""+pVenda.getProduto()+"\"");
+		String nova = string.replace("name=\"produto\" value=\"\"", "name=\"produto\" value=\""+pVenda.getProduto()+"\"");
 		return nova;
 	}
 	private String inserirValor(String string, ModelVendas pVenda) {
-		String nova = string.replace("name=\"valor\" value=\"\"", "name=\"data\" value=\""+pVenda.getValor()+"\"");
+		String nova = string.replace("name=\"valor\" value=\"\"", "name=\"valor\" value=\""+pVenda.getValor()+"\"");
 		return nova;
 	}
 	private String inserirQuantidade(String string, ModelVendas pVenda) {
-		String nova = string.replace("name=\"quantidade\" value=\"\"", "name=\"data\" value=\""+pVenda.getQuantidade()+"\"");
+		String nova = string.replace("name=\"quantidade\" value=\"\"", "name=\"quantidade\" value=\""+pVenda.getQuantidade()+"\"");
 		return nova;
 	}
 	private String inserirObservacao(String string, ModelVendas pVenda) {
@@ -153,20 +153,22 @@ public class ServletVendasUpdate extends HttpServlet {
 		VendaControll vendaControll = new VendaControll();
 		ModelVendas venda = new ModelVendas();
 		venda.setId(Integer.parseInt(request.getParameter("id")));
-		venda.setCliente(request.getParameter("cleinte"));
+		venda.setCliente(request.getParameter("cliente"));
 		venda.setData(request.getParameter("data"));
 		venda.setObservacao(request.getParameter("observacao"));
 		venda.setProduto(request.getParameter("produto"));
+		String quantidade = request.getParameter("quantidade");
 		venda.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
 		venda.setTipo_pagamento(Integer.parseInt(request.getParameter("tipopagamento")));
-		venda.setValor(Double.parseDouble(request.getParameter("valor")));
+		String valor = request.getParameter("valor");
+		valor = valor.replaceAll(",", ".");
+		venda.setValor(Double.parseDouble(valor));
 		venda.setVendedor(Integer.parseInt(request.getParameter("vendedor")));
 		
 		vendaControll.alterarVendasControle(venda);
 		
 		//redirecionar para pagina geral de vendas
-		response.sendRedirect("");
-		
+		response.sendRedirect("vendas");
 	}
 
 }

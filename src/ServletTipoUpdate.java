@@ -71,7 +71,7 @@ public class ServletTipoUpdate extends HttpServlet {
 		tipoControll.alterarTipoPagamentoControle(mTipo);
 		
 		//redirecionar para pagina geral de tipos pagamento
-		response.sendRedirect("");
+		response.sendRedirect("tipospagamento");
 	}
 
 }
