@@ -45,7 +45,7 @@ public class ServletVendasUpdate extends HttpServlet {
 		String fileSeparator = System.getProperty("file.separator");
 
 		String FormularioTipo = FileToString
-				.convert(this.getServletContext().getRealPath(fileSeparator) + fileSeparator + "FormularioVendas.html");
+				.convert(this.getServletContext().getRealPath(fileSeparator) + fileSeparator + "FormularioVendasFull.html");
 
 		ArrayList<ModelTipoPagamento> tipos = tipoControll.retornaListaTiposControle();
 
@@ -80,8 +80,6 @@ public class ServletVendasUpdate extends HttpServlet {
 		
 		for (ModelTipoPagamento tipo : listTipo) {
 			if(venda.getTipo_pagamento()==tipo.getId()) {
-				System.out.println(tipo.getId());
-				System.out.println(Integer.parseInt(request.getParameter("id")));
 				String aux2 = new String();
 				String aux3 = new String();
 				String aux = "<option value=\"#\" selected>@</option> \n";

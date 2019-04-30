@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controll.TipoPagamentoControll;
 import controll.VendaControll;
@@ -17,14 +18,22 @@ import util.FileToString;
 
 public class ServletVendasCadastro extends HttpServlet {
 
+	public String loginUrl = "login";
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if (session == null)
+			response.sendRedirect(loginUrl);
+		else {
+			String loggedIn = (String) session.getAttribute("LoggedIn");
 
-		response.setContentType("text/html");
-
+			if (loggedIn == null) {
+				response.sendRedirect(loginUrl);
+			} else if (!loggedIn.equals("true"))
+				response.sendRedirect(loginUrl);
+		}
 		procurarTipo(response, request);
-
-		PrintWriter out = response.getWriter();
 
 	}
 
@@ -34,22 +43,13 @@ public class ServletVendasCadastro extends HttpServlet {
 	}
 
 	void procurarTipo(HttpServletResponse response, HttpServletRequest request) throws IOException {
-		TipoPagamentoControll tipoControll = new TipoPagamentoControll();
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
 		String fileSeparator = System.getProperty("file.separator");
 
-		String FormularioTipo = FileToString
+		String FormularioVendas1 = FileToString
 				.convert(this.getServletContext().getRealPath(fileSeparator) + fileSeparator + "FormularioVendas.html");
-
-		ArrayList<ModelTipoPagamento> tipos = tipoControll.retornaListaTiposControle();
-
-		String modificador = new String();
-		if (tipos != null)
-			modificador = construirComboboxTipo(tipos);
-
-		String NovoFormulario = FormularioTipo.replaceAll("<option>##</option>", modificador);
 
 		VendedorControll vendedorCon = new VendedorControll();
 		ArrayList<ModelVendedor> vendedores = vendedorCon.retornaListaVendedoresControle();
@@ -58,7 +58,7 @@ public class ServletVendasCadastro extends HttpServlet {
 		if (vendedores != null)
 			modificador2 = construirComboboxVendedores(vendedores);
 
-		NovoFormulario = NovoFormulario.replaceAll("<option>@@</option>", modificador2);
+		String NovoFormulario = FormularioVendas1.replaceAll("<option>@@</option>", modificador2);
 		NovoFormulario = inserirAction(NovoFormulario, request);
 		out.print(NovoFormulario);
 
@@ -80,21 +80,7 @@ public class ServletVendasCadastro extends HttpServlet {
 		return options;
 	}
 
-	private String construirComboboxTipo(ArrayList<ModelTipoPagamento> listTipo) {
-		String options = new String();
-
-		for (ModelTipoPagamento tipo : listTipo) {
-			String aux2 = new String();
-			String aux3 = new String();
-			String aux = "<option value=\"#\">@</option> \n";
-
-			aux2 = aux.replaceAll("#", String.valueOf(tipo.getId()));
-
-			aux3 = aux2.replaceAll("@", tipo.getNome());
-			options += aux3;
-		}
-		return options;
-	}
+	
 
 	private String inserirAction(String string, HttpServletRequest request) {
 		String nova = string.replace("form id=\"1\" METHOD=POST",
@@ -102,28 +88,32 @@ public class ServletVendasCadastro extends HttpServlet {
 		return nova;
 
 	}
-	
+
 	private void inserir(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		VendaControll vendaControll = new VendaControll();
-		ModelVendas venda = new ModelVendas();
-		venda.setCliente(request.getParameter("cliente"));
-		venda.setData(request.getParameter("data"));
-		venda.setObservacao(request.getParameter("observacao"));
-		venda.setProduto(request.getParameter("produto"));
-		venda.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
-		venda.setTipo_pagamento(Integer.parseInt(request.getParameter("tipopagamento")));
-		String valor = request.getParameter("valor");
-		valor = valor.replaceAll(",", ".");
-		venda.setValor(Double.parseDouble(valor));
-		venda.setVendedor(Integer.parseInt(request.getParameter("vendedor")));
-		int i =vendaControll.salvarVendasControle(venda);
-		// se i for 0 deu errado
-		if(i==0)
-			response.sendRedirect("");
-		// int i = 1 deu certo
-		else if(i==1)
-			response.sendRedirect("vendas");
 		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("cliente", new String(request.getParameter("cliente")));
+		session.setAttribute("data", new String(request.getParameter("data")));
+		session.setAttribute("vendedor", new String(request.getParameter("vendedor")));
+		response.sendRedirect("insertVenda2");
+		
+		
+		/*
+		 * VendaControll vendaControll = new VendaControll(); ModelVendas venda = new
+		 * ModelVendas(); venda.setCliente(request.getParameter("cliente"));
+		 * venda.setData(request.getParameter("data"));
+		 * venda.setObservacao(request.getParameter("observacao"));
+		 * venda.setProduto(request.getParameter("produto"));
+		 * venda.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+		 * venda.setTipo_pagamento(Integer.parseInt(request.getParameter("tipopagamento"
+		 * ))); String valor = request.getParameter("valor"); valor =
+		 * valor.replaceAll(",", "."); venda.setValor(Double.parseDouble(valor));
+		 * venda.setVendedor(Integer.parseInt(request.getParameter("vendedor"))); int i
+		 * = vendaControll.salvarVendasControle(venda); // se i for 0 deu errado if (i
+		 * == 0) response.sendRedirect(""); // int i = 1 deu certo else if (i == 1)
+		 * response.sendRedirect("vendas");
+		 */
+
 	}
 
 }

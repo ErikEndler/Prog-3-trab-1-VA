@@ -6,14 +6,26 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controll.TipoPagamentoControll;
 import model.ModelTipoPagamento;
 import util.FileToString;
 
 public class ServletTipoListar extends HttpServlet {
+	
+	public String loginUrl = "login";
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if (session == null)
+			response.sendRedirect(loginUrl);
+		else {
+			String loggedIn = (String) session.getAttribute("LoggedIn");
+
+			if (!loggedIn.equals("true"))
+				response.sendRedirect(loginUrl);
+		}
 		listar(response);
 	}
 

@@ -5,21 +5,29 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controll.TipoPagamentoControll;
 import model.ModelTipoPagamento;
 import util.FileToString;
 
 public class ServletTipoInsert extends HttpServlet {
+	
+	public String loginUrl = "login";
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if (session == null)
+			response.sendRedirect(loginUrl);
+		else {
+			String loggedIn = (String) session.getAttribute("LoggedIn");
 
-		response.setContentType("text/html");
+			if (!loggedIn.equals("true"))
+				response.sendRedirect(loginUrl);
+		}
 
 		modificarFormulario(response, request);
-
-		PrintWriter out = response.getWriter();
-
 	}
 
 	private void modificarFormulario(HttpServletResponse response, HttpServletRequest request) throws IOException {
@@ -30,13 +38,13 @@ public class ServletTipoInsert extends HttpServlet {
 		String FormularioTipo = FileToString
 				.convert(this.getServletContext().getRealPath(fileSeparator) + fileSeparator + "FormularioTipo.html");
 		String NovoFormulario = new String();
-		NovoFormulario = inserirAction(NovoFormulario, request);
+		NovoFormulario = inserirAction(FormularioTipo, request);
 		out.print(NovoFormulario);
 		
 	}
 
 	private String inserirAction(String string, HttpServletRequest request) {
-		String nova = string.replace("form id=\"1\" METHOD=POST",
+		String nova = string.replace("form id=\"1\" method=post",
 				"form id=\"1\" method=post action=\"" + request.getRequestURI() + "\"");
 		return nova;
 
@@ -51,11 +59,11 @@ public class ServletTipoInsert extends HttpServlet {
 		TipoPagamentoControll tipoControll = new TipoPagamentoControll();
 		ModelTipoPagamento mTipo = new ModelTipoPagamento();
 		mTipo.setNome(request.getParameter("nome"));
-		boolean resultado= tipoControll.alterarTipoPagamentoControle(mTipo);
+		int resultado= tipoControll.salvarTipoPagamentoControle(mTipo);
 		
-		if(resultado==true) {
+		if(resultado==1) {
 			//redirecionar para pagina geral de tipos pagamento
-			response.sendRedirect("");
+			response.sendRedirect("tipospagamento");
 		}else {
 			response.sendRedirect("");
 		}

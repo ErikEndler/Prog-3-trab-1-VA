@@ -13,9 +13,6 @@ import util.FileToString;
 
 public class ServletLogin extends HttpServlet {
 
-	
-	
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		LoginControll loginControll = new LoginControll();
@@ -28,24 +25,30 @@ public class ServletLogin extends HttpServlet {
 
 		modelLogin = loginControll.retornarLoginControle(login);
 
-		if (modelLogin.getLogin().equals(login) && modelLogin.getSenha().equals(senha)) {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("LoggedIn", new String("true"));
-			response.sendRedirect("Home.html");
-			
-		} else {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("loggedIn", new String("false"));
+		if (modelLogin.getLogin()==null || modelLogin.getSenha()==null) {
 			sendLoginForm(response, true);
+		} else {
+			if (modelLogin.getLogin().equals(login) && modelLogin.getSenha().equals(senha)) {
+				System.out.println("logado");
+				HttpSession session = request.getSession(true);
+				session.setAttribute("LoggedIn", new String("true"));
+				response.sendRedirect("Home.html");
+
+			} else {
+				System.out.println("erro ao logar");
+				HttpSession session = request.getSession(true);
+				session.setAttribute("loggedIn", new String("false"));
+				sendLoginForm(response, true);
+			}
 		}
 
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		 sendLoginForm(response, false);
+		sendLoginForm(response, false);
 	}
-	
+
 	private void sendLoginForm(HttpServletResponse response, boolean withErrorMessage)
 			throws ServletException, IOException {
 
@@ -54,11 +57,19 @@ public class ServletLogin extends HttpServlet {
 
 		String fileSeparator = System.getProperty("file.separator");
 
-		String HTML = FileToString
+		String formLogin = FileToString
 				.convert(this.getServletContext().getRealPath(fileSeparator) + fileSeparator + "login.html");
+		if (withErrorMessage) {
+			String aux = "Login failed. Please try again.";
+			String newLogin = formLogin.replace("<p></p>", "<p>" + aux + "</p>");
+			out.println(newLogin);
 
-		out.println(HTML);
+			out.flush();
+		} else {
+			out.println(formLogin);
 
-		out.flush();
+			out.flush();
+		}
+
 	}
 }

@@ -23,7 +23,7 @@ public class LoginControll {
 	}
 
 	public ModelLogin retornarLoginControle(String pNome) {
-		return this.daoLogin.retornaLoginDAO(pNome);
+		return this.daoLogin.retornaLoginDAO(pNome);	
 	}
 
 	public ArrayList<ModelLogin> retornaListaLoginControle() {

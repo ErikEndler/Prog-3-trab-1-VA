@@ -72,6 +72,27 @@ public class DaoLogin extends Conexao {
 				}
 				return modelLogin;
 			}
+			public boolean retornaLoginVerificadorDAO(String pLogin) {
+				ModelLogin modelLogin = new ModelLogin();
+				try {
+					this.conectar();
+					this.executarSQL("SELECT "
+							+ "login,"
+							+ "senha"
+							+ " FROM tb_login WHERE login = '"+pLogin+"';");
+					
+					while(this.getResultSet().next()) {
+						modelLogin.setLogin(this.getResultSet().getString(1));
+						modelLogin.setSenha(this.getResultSet().getString(2));
+
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					this.fecharConexao();
+				}
+				return false;
+			}
 			/* Retorna a lista de login */
 			public ArrayList<ModelLogin> retornarListaLoginDAO(){
 				ArrayList<ModelLogin> listaLogin = new ArrayList<>();

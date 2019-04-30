@@ -53,14 +53,44 @@
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
+					<label for="produto">Produto</label> <input type="text"
+						class="form-control" id="produto" name="produto" value="" placeholder="Produto">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
 					<label for="vendedor">Vendedor</label> <select
 						id="vendedor" name="vendedor" value="" class="form-control">
 						<option>@@</option>
 					</select>
 				</div>
 			</div>
-			
-			<button class="btn btn-primary" type="submit">Proximo</button>
+			<div class="form-row">
+				<div class="form-group col-md-2">
+					<label for="valor">Valor</label> <input type="text"
+						class="form-control" name="valor" value="" id="valor" placeholder="$ 00,00">
+				</div>
+				<div class="form-group col-md-2">
+					<label for="quantidade">Quantidade</label> <input
+						type="number" class="form-control" name="quantidade" value="" id="quantidade"
+						placeholder="Quantidade">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="tipopagamento">Forma Pagamento</label> <select
+						id="tipopagamento" name="tipopagamento" value=""  class="form-control">
+						<option>##</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-8">
+					<label for="observacao">Observação</label>
+					<textarea class="form-control" name="observacao"  id="observacao" rows="3"></textarea>
+				</div>
+			</div>
+			<button class="btn btn-primary" type="submit">Salvar</button>
 			<button type="reset" class="btn btn-warning">Limpar</button>
 		</div>
 	</form>

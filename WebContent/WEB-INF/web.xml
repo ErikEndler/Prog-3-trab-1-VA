@@ -2,12 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>PROG_3_1°VA</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>/home</welcome-file>
+    <welcome-file>/login</welcome-file>
   </welcome-file-list>
   
   
@@ -42,6 +38,28 @@
   <servlet-mapping>
     <servlet-name>ServletVendasCadastro</servlet-name>
     <url-pattern>/insertVenda</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>ServletVendasCadastro2</display-name>
+    <servlet-name>ServletVendasCadastro2</servlet-name>
+    <servlet-class>ServletVendasCadastro2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletVendasCadastro2</servlet-name>
+    <url-pattern>/insertVenda2</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ServletHome</display-name>
+    <servlet-name>ServletHome</servlet-name>
+    <servlet-class>ServletHome</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletHome</servlet-name>
+    <url-pattern>/home</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -88,7 +106,16 @@
     <url-pattern>/insertTipo</url-pattern>
   </servlet-mapping>
   
-  
+  <filter>
+    <display-name>FilterLogin</display-name>
+    <filter-name>FilterLogin</filter-name>
+    <filter-class>filters.FilterLogin</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterLogin</filter-name>
+    <servlet-name>/*</servlet-name>
+    <url-pattern>/filterLogin</url-pattern>
+  </filter-mapping>
   
   
   
