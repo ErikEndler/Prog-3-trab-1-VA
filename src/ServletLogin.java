@@ -24,20 +24,29 @@ public class ServletLogin extends HttpServlet {
 		senha = (senha != null ? senha : "").trim();
 
 		modelLogin = loginControll.retornarLoginControle(login);
+		System.out.println(modelLogin.getLogin());
+		System.out.println(modelLogin.getSenha());
+		System.out.println(login);
+		
+		
 
 		if (modelLogin.getLogin()==null || modelLogin.getSenha()==null) {
+			System.out.println("redirecionamento");
+			HttpSession session = request.getSession(true);
+			session.setAttribute("LoggedIn", new String("false"));
 			sendLoginForm(response, true);
-		} else {
+		} 
+		else {
 			if (modelLogin.getLogin().equals(login) && modelLogin.getSenha().equals(senha)) {
 				System.out.println("logado");
 				HttpSession session = request.getSession(true);
 				session.setAttribute("LoggedIn", new String("true"));
-				response.sendRedirect("Home.html");
+				response.sendRedirect("home");
 
 			} else {
 				System.out.println("erro ao logar");
 				HttpSession session = request.getSession(true);
-				session.setAttribute("loggedIn", new String("false"));
+				session.setAttribute("LoggedIn", new String("false"));
 				sendLoginForm(response, true);
 			}
 		}

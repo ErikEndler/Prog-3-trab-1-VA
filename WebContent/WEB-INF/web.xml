@@ -2,8 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>PROG_3_1°VA</display-name>
   <welcome-file-list>
-    <welcome-file>/home</welcome-file>
-    <welcome-file>/login</welcome-file>
+    <welcome-file>home</welcome-file>
+    <welcome-file>login</welcome-file>
   </welcome-file-list>
   
   
@@ -27,6 +27,17 @@
   <servlet-mapping>
     <servlet-name>ServletVendasUpdate</servlet-name>
     <url-pattern>/updateVenda</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>SevletVendasDelete</display-name>
+    <servlet-name>SevletVendasDelete</servlet-name>
+    <servlet-class>SevletVendasDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SevletVendasDelete</servlet-name>
+    <url-pattern>/deleteVenda</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -104,6 +115,17 @@
   <servlet-mapping>
     <servlet-name>ServletTipoInsert</servlet-name>
     <url-pattern>/insertTipo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>ServletTipoDelete</display-name>
+    <servlet-name>ServletTipoDelete</servlet-name>
+    <servlet-class>ServletTipoDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletTipoDelete</servlet-name>
+    <url-pattern>/deleteTipo</url-pattern>
   </servlet-mapping>
   
   <filter>
