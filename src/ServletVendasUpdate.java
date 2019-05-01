@@ -20,13 +20,9 @@ public class ServletVendasUpdate extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-
 		preencherHTML(response,request);
 
-		PrintWriter out = response.getWriter();
-
+	
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,7 +55,7 @@ public class ServletVendasUpdate extends HttpServlet {
 		ArrayList<ModelVendedor> vendedores = vendedorCon.retornaListaVendedoresControle();
 		String modificador2 = new String();
 		if (vendedores != null)
-			modificador2 = construirComboboxVendedores(vendedores);
+			modificador2 = construirComboboxVendedores(vendedores, venda);
 
 		NovoFormulario = NovoFormulario.replaceAll("<option>@@</option>", modificador2);
 		
@@ -104,18 +100,30 @@ public class ServletVendasUpdate extends HttpServlet {
 	}
 	
 	//fazer modificação para setar selecionado igual combobox acima
-	private String construirComboboxVendedores(ArrayList<ModelVendedor> vendedores) {
+	private String construirComboboxVendedores(ArrayList<ModelVendedor> vendedores, ModelVendas venda) {
 		String options = new String();
 
 		for (ModelVendedor vendedor : vendedores) {
-			String aux2 = new String();
-			String aux3 = new String();
-			String aux = "<option value=\"#\">@</option> \n";
+			if(venda.getId()==vendedor.getId()) {
+				String aux2 = new String();
+				String aux3 = new String();
+				String aux = "<option value=\"#\">@</option> \n";
 
-			aux2 = aux.replaceAll("#", String.valueOf(vendedor.getId()));
+				aux2 = aux.replaceAll("#", String.valueOf(vendedor.getId()));
 
-			aux3 = aux2.replaceAll("@", vendedor.getNome());
-			options += aux3;
+				aux3 = aux2.replaceAll("@", vendedor.getNome());
+				options += aux3;
+			}else {
+				String aux2 = new String();
+				String aux3 = new String();
+				String aux = "<option value=\"#\">@</option> \n";
+
+				aux2 = aux.replaceAll("#", String.valueOf(vendedor.getId()));
+
+				aux3 = aux2.replaceAll("@", vendedor.getNome());
+				options += aux3;
+			}
+			
 		}
 		return options;
 	}

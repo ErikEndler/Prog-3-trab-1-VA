@@ -16,9 +16,7 @@ public class ServletTipoUpdate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		preencherHtml(response, request);
-
-		PrintWriter out = response.getWriter();
+		preencherHtml(response, request);		
 
 	}
 
