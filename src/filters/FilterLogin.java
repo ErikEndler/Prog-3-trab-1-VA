@@ -1,6 +1,7 @@
 package filters;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -24,6 +25,8 @@ public class FilterLogin implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		
+		
 		String login = (String) ((HttpServletRequest)request).getSession().getAttribute("LoggedIn");
 		if(login != null && login.equals("true")) {
 			System.out.println("logado");

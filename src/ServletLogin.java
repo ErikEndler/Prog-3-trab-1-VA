@@ -41,6 +41,7 @@ public class ServletLogin extends HttpServlet {
 				System.out.println("logado");
 				HttpSession session = request.getSession(true);
 				session.setAttribute("LoggedIn", new String("true"));
+				session.setAttribute("usuario",login);
 				response.sendRedirect("home");
 
 			} else {
