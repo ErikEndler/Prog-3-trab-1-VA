@@ -15,6 +15,8 @@ public class ServletLogin extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
 		LoginControll loginControll = new LoginControll();
 		ModelLogin modelLogin = new ModelLogin();
 		String login = request.getParameter("login");
@@ -51,6 +53,7 @@ public class ServletLogin extends HttpServlet {
 				sendLoginForm(response, true);
 			}
 		}
+		
 
 	}
 

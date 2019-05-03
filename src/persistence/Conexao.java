@@ -15,7 +15,7 @@ public class Conexao {
 	private Statement statement;
 	private ResultSet resultSet;
 
-	private String servidor = "localhost:5432";
+	private String servidor = "localhost:5433";
 	private String nomeDoBanco = "trab_1_prog3";
 	private String usuario = "postgres";
 	private String senha = "";

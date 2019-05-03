@@ -26,6 +26,8 @@ public class SevletVendasDelete extends HttpServlet {
 		TipoPagamentoControll tipoControll = new TipoPagamentoControll();
 		VendaControll vendaControll = new VendaControll();
 		ModelVendas venda = vendaControll.retornarVendaControle(Integer.parseInt(request.getParameter("id")));
+		
+		
 	
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -45,11 +47,17 @@ public class SevletVendasDelete extends HttpServlet {
 		
 		VendedorControll vendedorCon = new VendedorControll();
 		ArrayList<ModelVendedor> vendedores = vendedorCon.retornaListaVendedoresControle();
-		String modificador2 = new String();
+		//String modificador2 = new String();
 		if (vendedores != null)
-			modificador2 = construirComboboxVendedores(vendedores, venda);
+		//	modificador2 = construirComboboxVendedores(vendedores, venda);
 
-		NovoFormulario = NovoFormulario.replaceAll("<option>@@</option>", modificador2);
+		//NovoFormulario = NovoFormulario.replaceAll("<option>@@</option>", modificador2);
+		NovoFormulario = NovoFormulario.replaceAll("<option>##</option>", "");
+		NovoFormulario = NovoFormulario.replaceAll("<option>@@</option>", "");
+		NovoFormulario = NovoFormulario.replaceAll("</select>", "");
+		NovoFormulario = NovoFormulario.replaceAll("<select", "<input type=\"text\"");
+		NovoFormulario = NovoFormulario.replaceAll("<option value=\"1\" selected>à vista</option> ","");
+		NovoFormulario = NovoFormulario.replaceAll("<option value=\"1\" selected>crédito</option> ","");
 		
 		NovoFormulario= inserirData(NovoFormulario,venda);
 		NovoFormulario=inserirCliente(NovoFormulario, venda);
@@ -59,6 +67,8 @@ public class SevletVendasDelete extends HttpServlet {
 		NovoFormulario=inserirObservacao(NovoFormulario, venda);
 		NovoFormulario=inserirAction(NovoFormulario, request,venda);
 		NovoFormulario=mudarBotao(NovoFormulario);
+		NovoFormulario=inserirVendedor(NovoFormulario, venda);
+		NovoFormulario=inserirFormaPag(NovoFormulario, venda);
 		
 		out.print(NovoFormulario);
 		
@@ -103,6 +113,22 @@ public class SevletVendasDelete extends HttpServlet {
 
 	private String inserirData(String string, ModelVendas venda) {
 		String nova = string.replace("name=\"data\" value=\"\"", "disabled name=\"data\" value=\""+venda.getData()+"\"");
+		return nova;
+	}
+	
+	private String inserirVendedor(String string, ModelVendas pVenda) {
+		VendedorControll vendedorControll = new VendedorControll();
+		ModelVendedor vendedor = vendedorControll.retornarVendedorControle(pVenda.getVendedor());
+		String vendeu = vendedor.getNome();
+		String nova = string.replace("name=\"vendedor\" value=\"\"", "name=\"vendedor\" value=\""+vendeu+"\" readonly=\"true\"");
+		return nova;
+	}
+	
+	private String inserirFormaPag(String string, ModelVendas pVenda) {
+		TipoPagamentoControll pagControll = new TipoPagamentoControll();
+		ModelTipoPagamento formPag = pagControll.retornarTipoPagamentoControle(pVenda.getTipo_pagamento());
+		String pagou = formPag.getNome();		
+		String nova = string.replace("name=\"tipopagamento\" value=\"\"", "name=\"tipopagamento\" value=\""+pagou+"\" readonly=\"true\"");
 		return nova;
 	}
 

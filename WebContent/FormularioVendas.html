@@ -31,7 +31,11 @@
 				
 			</ul>
 		</div>
+		<form class="form-inline">
+			<a href="deslogar"  class="btn btn-outline-danger" >Logout</a>
+		</form>
 	</nav>
+	
 
 
 	<div class="container">
@@ -42,19 +46,19 @@
 			<div class="form-row" >
 				<div class="form-group col-md-3">
 					<label for="data">Data</label> <input type="date"
-						class="form-control" name="data" value="" id="data" placeholder="Email">
+						class="form-control" name="data" value="" id="data" placeholder="Email" required>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="cliente">Cliente</label> <input type="text"
-						class="form-control" name="cliente" value="" id="cliente" placeholder="Cliente">
+						class="form-control" name="cliente" value="" id="cliente" placeholder="Cliente" required>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="vendedor">Vendedor</label> <select
-						id="vendedor" name="vendedor" value="" class="form-control">
+						id="vendedor" name="vendedor" value="" class="form-control" required>
 						<option>@@</option>
 					</select>
 				</div>

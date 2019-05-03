@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>PROG_3_1°VA</display-name>
+  <display-name>projetoProg</display-name>
   <welcome-file-list>
     <welcome-file>home</welcome-file>
     <welcome-file>login</welcome-file>
   </welcome-file-list>
-  
-  
   <servlet>
     <description></description>
     <display-name>ServletLogin</display-name>
@@ -17,8 +15,7 @@
     <servlet-name>ServletLogin</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>ServletVendasUpdate</display-name>
     <servlet-name>ServletVendasUpdate</servlet-name>
@@ -28,7 +25,6 @@
     <servlet-name>ServletVendasUpdate</servlet-name>
     <url-pattern>/updateVenda</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>SevletVendasDelete</display-name>
@@ -39,7 +35,6 @@
     <servlet-name>SevletVendasDelete</servlet-name>
     <url-pattern>/deleteVenda</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ServletVendasCadastro</display-name>
@@ -50,8 +45,7 @@
     <servlet-name>ServletVendasCadastro</servlet-name>
     <url-pattern>/insertVenda</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>ServletVendasCadastro2</display-name>
     <servlet-name>ServletVendasCadastro2</servlet-name>
@@ -61,7 +55,6 @@
     <servlet-name>ServletVendasCadastro2</servlet-name>
     <url-pattern>/insertVenda2</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ServletHome</display-name>
@@ -72,7 +65,6 @@
     <servlet-name>ServletHome</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ServletVendasListar</display-name>
@@ -83,7 +75,6 @@
     <servlet-name>ServletVendasListar</servlet-name>
     <url-pattern>/vendas</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ServletTipoUpdate</display-name>
@@ -94,7 +85,6 @@
     <servlet-name>ServletTipoUpdate</servlet-name>
     <url-pattern>/updateTipo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ServletTipoListar</display-name>
@@ -105,7 +95,6 @@
     <servlet-name>ServletTipoListar</servlet-name>
     <url-pattern>/tipospagamento</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ServletTipoInsert</display-name>
@@ -116,7 +105,6 @@
     <servlet-name>ServletTipoInsert</servlet-name>
     <url-pattern>/insertTipo</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ServletTipoDelete</display-name>
@@ -127,7 +115,6 @@
     <servlet-name>ServletTipoDelete</servlet-name>
     <url-pattern>/deleteTipo</url-pattern>
   </servlet-mapping>
-  
   <filter>
     <display-name>FilterLogin</display-name>
     <filter-name>FilterLogin</filter-name>
@@ -145,5 +132,14 @@
     <servlet-name>ServletVendasUpdate</servlet-name>
     <url-pattern>/home</url-pattern>
   </filter-mapping>
-    
+  <servlet>
+    <description></description>
+    <display-name>deslogar</display-name>
+    <servlet-name>deslogar</servlet-name>
+    <servlet-class>ServletDeslogar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deslogar</servlet-name>
+    <url-pattern>/deslogar</url-pattern>
+  </servlet-mapping>
 </web-app>
