@@ -27,8 +27,7 @@ public class ServletTipoUpdate extends HttpServlet {
 
 	private void preencherHtml(HttpServletResponse response, HttpServletRequest request) throws IOException {
 		TipoPagamentoControll tipoControll = new TipoPagamentoControll();
-		ModelTipoPagamento modelTipo = tipoControll
-				.retornarTipoPagamentoControle(Integer.parseInt(request.getParameter("id")));
+		ModelTipoPagamento modelTipo = tipoControll.retornarTipoPagamentoControle(Integer.parseInt(request.getParameter("id")));
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
